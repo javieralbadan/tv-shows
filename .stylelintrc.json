@@ -1,0 +1,7 @@
+{
+	"extends": ["stylelint-config-standard"],
+	"ignoreFiles": ["**/*.js", "**/*.ts", "**/*.json"],
+	"rules": {
+		"media-feature-range-notation": null
+	}
+}

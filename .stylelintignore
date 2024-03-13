@@ -1,0 +1,6 @@
+.husky/
+.vscode/
+dist/
+e2e/
+node_modules/
+public/
