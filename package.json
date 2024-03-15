@@ -16,14 +16,6 @@
 		"prepare": "husky"
 	},
 	"lint-staged": {
-		"*.{js,jsx,ts,tsx,html,css}": [
-			"prettier --write",
-			"git add"
-		],
-		"*.{ts,vue}": [
-			"eslint --fix",
-			"git add"
-		],
 		"*.css": [
 			"stylelint --fix",
 			"git add"
@@ -34,6 +26,14 @@
 		],
 		"*.{png,jpeg,jpg,gif,svg}": [
 			"imagemin-lint-staged",
+			"git add"
+		],
+		"*.{js,jsx,ts,tsx,html,css}": [
+			"prettier --write",
+			"git add"
+		],
+		"*.{ts,vue}": [
+			"eslint --fix",
 			"git add"
 		]
 	},
@@ -61,6 +61,7 @@
 		"lint-staged": "^15.2.2",
 		"npm-run-all2": "^6.1.2",
 		"prettier": "^3.0.3",
+		"sass": "^1.72.0",
 		"stylelint": "^16.2.1",
 		"stylelint-config-standard": "^36.0.0",
 		"typescript": "~5.4.0",

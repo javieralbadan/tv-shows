@@ -25,7 +25,7 @@ module.exports = {
 		'arrow-parens': ['error', 'always'],
 		'comma-dangle': ['error', 'always-multiline'],
 		indent: ['error', 'tab'],
-		'max-len': [1, { code: 120 }],
+		'max-len': [1, { code: 100 }],
 		'no-empty-pattern': 'off',
 		'no-tabs': ['error', { allowIndentationTabs: true }],
 		'no-undef': 'off',

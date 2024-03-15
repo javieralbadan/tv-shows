@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ShowItemCard from '@/components/ShowItemCard.vue';
+import ShowList from '@/components/ShowList.vue';
 import { searchService } from '@/services/managers/shows';
 import type { ShowItem } from '@/types/ShowItem';
 import { onMounted, ref } from 'vue';
@@ -27,8 +27,12 @@ onMounted(async () => {
 <template>
 	<main>
 		<p v-if="isLoading && !isError">Loading...</p>
-		<template v-else>
-			<ShowItemCard v-for="item in shows" :key="item.id" :show="item" />
-		</template>
+		<div v-else class="show-list">
+			<ShowList section-title="Action" :shows="shows" />
+			<ShowList section-title="Action" :shows="shows" />
+			<ShowList section-title="Action" :shows="shows" />
+		</div>
 	</main>
 </template>
+
+<style scoped lang="scss"></style>
