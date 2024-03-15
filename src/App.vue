@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router';
+import { INITIAL_CATEGORIES } from '@/config/index.json';
 </script>
 
 <template>
-	<header>
-		<h1>TV Shows App</h1>
-		<nav>
-			<button>Action</button>
-			<button>Comedy</button>
-			<button>Drama</button>
-			<button>Sci-Fi</button>
+	<header class="header">
+		<h1 class="title">TV Shows App</h1>
+		<nav class="nav">
+			<button v-for="item in INITIAL_CATEGORIES" :key="item.id" class="button navbutton">
+				{{ item.title }}
+			</button>
 		</nav>
 	</header>
 
@@ -17,24 +17,42 @@ import { RouterView } from 'vue-router';
 </template>
 
 <style scoped lang="scss">
-header {
+.header {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	background-color: #333;
+	background-color: var(--color-black-full);
 	color: white;
 	padding: 1rem;
 
-	h1 {
+	.title {
 		font-size: 1.2rem;
 	}
-}
 
-button {
-	border: none;
-	background: none;
-	color: white;
-	font: inherit;
-	cursor: pointer;
+	.navbutton {
+		position: relative;
+		color: #ddd;
+		transition: color 0.5s;
+
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: -0.5rem;
+			width: 40%;
+			height: 1px;
+			background-color: var(--vt-c-indigo);
+			transition: all 0.5s;
+		}
+
+		&:hover {
+			color: var(--color-red);
+
+			&::after {
+				bottom: -0.1rem;
+				width: 80%;
+				background-color: var(--color-red);
+			}
+		}
+	}
 }
 </style>

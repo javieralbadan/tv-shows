@@ -1,3 +1,12 @@
 {
-	"BASE_URL": "https://api.tvmaze.com"
+	"BASE_URL": "https://api.tvmaze.com",
+	"INITIAL_CATEGORIES": [
+		{ "id": "action", "title": "Action" },
+		{ "id": "drama", "title": "Drama" },
+		{ "id": "comedy", "title": "Comedy" },
+		{ "id": "nature", "title": "Nature" },
+		{ "id": "sports", "title": "Sports" },
+		{ "id": "food", "title": "Food" },
+		{ "id": "thriller", "title": "Thriller" }
+	]
 }

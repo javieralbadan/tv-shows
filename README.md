@@ -2,6 +2,36 @@
 
 This template should help get you started developing with Vue 3 in Vite.
 
+## Using RSCSS as a CSS Design System
+
+As an alternative to avoid BEM, this project is implementing RSCSS, that in the basics has the follow rules:
+
+1. Components: Components will be named with <b>at least two words</b>, with a dash between each word.
+
+```
+.search-form
+.article-card
+```
+
+2. Elements: Components contains Elements. These should have <b>classes that are only one word</b>. Use classnames whenever possible, avoid tag selector
+
+```
+.field
+.action
+.firstname
+.lastname
+```
+
+3. Variants: Classnames for variants will be <b>prefixed by a dash (-)</b>
+
+```
+.like-button {
+  &.-wide { /* ... */ }
+  &.-short { /* ... */ }
+  &.-disabled { /* ... */ }
+}
+```
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).

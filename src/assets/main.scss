@@ -1,0 +1,34 @@
+@import './base';
+
+.badge {
+	border-radius: 1rem;
+	box-sizing: border-box;
+	font-size: 0.6rem;
+	font-weight: 700;
+	line-height: 12px;
+	margin: 0.5rem 0.1rem;
+	padding: 0.2rem 0.8rem;
+	text-align: center;
+	text-wrap: nowrap;
+	white-space-collapse: collapse;
+
+	&--success {
+		background-color: #095529;
+		color: #79eca7;
+	}
+
+	&--info {
+		background-color: #104594;
+		color: #99d9f7;
+	}
+
+	&--danger {
+		background-color: #940d0d;
+		color: #f79797;
+	}
+
+	&--warning {
+		background-color: #9b4f08;
+		color: #f5b975;
+	}
+}

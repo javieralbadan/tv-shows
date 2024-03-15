@@ -16,12 +16,8 @@
 		"prepare": "husky"
 	},
 	"lint-staged": {
-		"*.css": [
-			"stylelint --fix",
-			"git add"
-		],
 		"*.scss": [
-			"stylelint --syntax=scss",
+			"stylelint --config=.stylelintrc.json",
 			"git add"
 		],
 		"*.{png,jpeg,jpg,gif,svg}": [
@@ -64,6 +60,7 @@
 		"sass": "^1.72.0",
 		"stylelint": "^16.2.1",
 		"stylelint-config-standard": "^36.0.0",
+		"stylelint-config-standard-scss": "^13.0.0",
 		"typescript": "~5.4.0",
 		"vite": "^5.1.5",
 		"vite-plugin-vue-devtools": "^7.0.16",

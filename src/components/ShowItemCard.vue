@@ -1,90 +1,102 @@
 <script setup lang="ts">
 import type { ShowItem } from '@/types/ShowItem';
+import { ref } from 'vue';
 
 interface Props {
 	show: ShowItem;
 }
 
 const props = defineProps<Props>();
-console.log('🚀 ~ props:', props);
+const cardImage = ref<string>(props.show.image?.medium);
 </script>
 
 <template>
 	<div class="show-card">
-		<img :alt="show.name"
-fetchpriority="high"
-loading="eager"
-:src="show.image?.medium" />
-		<div class="show-card__content">
-			<p class="show-card__leading">
-				<span class="show-card__leading-meta">Category</span
-				><span class="size-1.5 rounded-full bg-blue-700">·</span
-				><span class="show-card__leading-meta">4 min. read</span>
+		<div class="image" :style="`background-image: url(${cardImage});`" />
+		<div class="imagefallback">
+			<h3 class="name">{{ show.name }}</h3>
+		</div>
+		<div class="content">
+			<p class="leading">
+				<span class="leadingmeta">{{ show.language }}</span>
+				<span class="leadingdivider">·</span>
+				<span class="leadingmeta">{{ show.averageRuntime }}min</span>
 			</p>
-			<h3 class="show-card__name">{{ show.name }}</h3>
-			<p class="show-card__description" v-html="show.summary" />
-			<button type="button">View More ></button>
+			<h3 class="name">{{ show.name }}</h3>
 		</div>
 	</div>
 </template>
 
 <style scoped lang="scss">
+$card-width: 200px;
+$image-height: 250px;
+
 .show-card {
+	position: relative;
 	flex: 0 0 auto;
 	align-items: flex-start;
-	width: 200px;
+	width: $card-width;
 	// margin: 0.6rem;
 	overflow: hidden;
-	background-color: #f9f9f9;
 	border-radius: 0.5rem;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+	transition: all 0.5s;
+	box-shadow: 0 0.1rem 0.2rem #101010;
+	cursor: pointer;
+	opacity: 100%;
 
-	img {
-		width: 100%;
-		height: 250px;
-		object-fit: cover;
+	&:hover {
+		transform: scale(1.05);
+		box-shadow: 0 0 0.3rem #303030;
+		opacity: 90%;
 	}
 
-	&__content {
+	.image {
+		width: $card-width;
+		height: $image-height;
+		background-origin: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+
+	.imagefallback {
+		position: absolute;
+		top: 0;
+		z-index: -1;
+		width: $card-width;
+		height: $image-height;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: #000;
+	}
+
+	.content {
 		display: flex;
 		flex-direction: column;
 		padding: 0.5rem;
+	}
+
+	.leading {
+		display: inline-flex;
+		align-items: center;
 		gap: 0.2rem;
 	}
 
-	&__leading {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.5rem;
-
-		&-meta {
-			color: #678;
-			font-size: 0.8rem;
-		}
+	.leadingmeta {
+		font-size: 0.8rem;
+		color: var(--color-text-soft);
 	}
 
-	&__name {
+	.leadingdivider {
+		color: #68c;
+		font-size: 3rem;
+		line-height: 0.8rem;
+		padding-bottom: 0.3rem;
+	}
+
+	.name {
 		font-size: 1rem;
 		font-weight: 600;
-	}
-
-	&__description {
-		font-size: 0.8rem;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-	}
-
-	button {
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		white-space: nowrap;
-		border: none;
-		border-radius: 1rem;
-		background: #f43f5e;
-		padding: 0.5rem;
-		color: #fff;
 	}
 }
 </style>
