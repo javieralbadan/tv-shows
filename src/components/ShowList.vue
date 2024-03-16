@@ -38,7 +38,7 @@ onMounted(async () => {
 	<div class="show-list">
 		<div class="header">
 			<h2 class="title">{{ category.title }}</h2>
-			<button class="button -red seeallbutton">See all ></button>
+			<button class="button -red seeallbutton">{{ $t('showList.seeAll') }}</button>
 		</div>
 		<p v-if="isLoading && !isError">Loading...</p>
 		<div v-else class="rail">

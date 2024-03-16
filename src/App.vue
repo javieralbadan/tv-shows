@@ -6,7 +6,7 @@ import { INITIAL_CATEGORIES } from '@/config/index.json';
 <template>
 	<header class="header">
 		<h1 class="title">
-			<RouterLink to="/">TV Shows App</RouterLink>
+			<RouterLink to="/">{{ $t('app.title') }}</RouterLink>
 		</h1>
 		<nav class="nav">
 			<button v-for="item in INITIAL_CATEGORIES" :key="item.id" class="button navbutton">
@@ -18,9 +18,9 @@ import { INITIAL_CATEGORIES } from '@/config/index.json';
 	<RouterView />
 
 	<footer class="footer">
-		<p>Rotterdam, NL. 2024</p>
+		<p>{{ $t('app.footerInfo') }}</p>
 		<a class="designby" href="https://www.linkedin.com/in/javier-albadan/" target="_blank">
-			@javier-albadan
+			{{ $t('app.author') }}
 		</a>
 	</footer>
 </template>
