@@ -20,7 +20,7 @@ import { INITIAL_CATEGORIES } from '@/config/index.json';
 	<footer class="footer">
 		<p>{{ $t('app.footerInfo') }}</p>
 		<a class="designby" href="https://www.linkedin.com/in/javier-albadan/" target="_blank">
-			{{ $t('app.author') }}
+			@{{ $t('app.author') }}
 		</a>
 	</footer>
 </template>

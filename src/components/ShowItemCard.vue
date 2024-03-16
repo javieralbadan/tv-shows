@@ -1,27 +1,24 @@
 <script setup lang="ts">
 import type { ShowItem } from '@/types/ShowItem';
-import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
+import CardImage from '@/components/CardImage.vue';
+import DotDivider from '@/components/DotDivider.vue';
 
 interface Props {
 	show: ShowItem;
 }
 
 const props = defineProps<Props>();
-const cardImage = ref<string>(props.show.image?.medium);
 const showId = props.show.externals.thetvdb || props.show.id;
 </script>
 
 <template>
 	<RouterLink class="show-card" :to="{ name: 'show', params: { id: showId } }">
-		<div class="image" :style="`background-image: url(${cardImage});`" />
-		<div class="imagefallback">
-			<h3 class="name">{{ show.name }}</h3>
-		</div>
+		<CardImage :image="show.image" :name="show.name" />
 		<div class="content">
 			<p class="leading">
 				<span class="leadingmeta">{{ show.language }}</span>
-				<span class="leadingdivider">·</span>
+				<DotDivider />
 				<span class="leadingmeta">{{ show.averageRuntime }}min</span>
 			</p>
 			<h3 class="name">{{ show.name }}</h3>
@@ -31,7 +28,6 @@ const showId = props.show.externals.thetvdb || props.show.id;
 
 <style scoped lang="scss">
 $card-width: 200px;
-$image-height: 250px;
 
 .show-card {
 	position: relative;
@@ -56,26 +52,6 @@ $image-height: 250px;
 		opacity: 90%;
 	}
 
-	.image {
-		width: $card-width;
-		height: $image-height;
-		background-origin: center;
-		background-size: cover;
-		background-repeat: no-repeat;
-	}
-
-	.imagefallback {
-		position: absolute;
-		top: 0;
-		z-index: -1;
-		width: $card-width;
-		height: $image-height;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background: #000;
-	}
-
 	.content {
 		display: flex;
 		flex-direction: column;
@@ -91,13 +67,6 @@ $image-height: 250px;
 	.leadingmeta {
 		font-size: 0.8rem;
 		color: var(--color-text-soft);
-	}
-
-	.leadingdivider {
-		color: #68c;
-		font-size: 3rem;
-		line-height: 0.8rem;
-		padding-bottom: 0.3rem;
 	}
 
 	.name {

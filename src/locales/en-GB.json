@@ -1,7 +1,10 @@
 {
 	"app.title": "TV Shows App",
 	"app.footerInfo": "Rotterdam, NL. 2024",
-	"app.author": "@javier-albadan",
+	"app.author": "javier-albadan",
 	"app.loading": "Loading...",
-	"app.noData": "There is no data available"
+	"app.noData": "There is no data available",
+	"showList.seeAll": "See all >",
+	"showDetails.ended": "Ended",
+	"showDetails.officialSite": "Official Site"
 }

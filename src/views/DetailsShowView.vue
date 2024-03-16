@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { lookupService } from '@/services/managers/shows';
+import BackgroundDetails from '@/components/BackgroundDetails.vue';
+import ShowDetails from '@/components/ShowDetails.vue';
 import type { ShowItem } from '@/types/ShowItem';
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
-
 const router = useRouter();
 const { id } = router.currentRoute.value.params;
 const showId: string = Array.isArray(id) ? id[0] : id;
@@ -30,21 +31,32 @@ onMounted(async () => {
 
 <template>
 	<div class="details-show">
-		<h1>This is the details show page</h1>
-		<p>Received Parameter: {{ $route.params.id }}</p>
-		<p>TV Show detail: {{ show }}</p>
+		<BackgroundDetails :image="show?.image" />
+		<ShowDetails :show="show" />
 	</div>
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/media-queries.scss';
+
 $header-height: 65px;
 $footer-height: 55px;
 
-@media (min-width: 1024px) {
-	.details {
-		height: calc(100vh - $header-height - $footer-height);
-		display: flex;
-		align-items: center;
+.details-show {
+	position: relative;
+	width: 100%;
+	height: calc(100vh - $header-height - $footer-height);
+	display: flex;
+	align-items: center;
+	background: var(--color-black-full);
+}
+
+@media (min-width: $desktop-breakpoint) {
+	.details-show {
+		.content {
+			width: min(600px, 100%);
+			padding: 0 10%;
+		}
 	}
 }
 </style>
