@@ -1,5 +1,50 @@
 @import './base';
 
+a {
+	color: var(--color-white-soft);
+	text-decoration: none;
+	transition: color 0.5s;
+
+	&:hover {
+		color: var(--color-white);
+	}
+}
+
+.button {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	border: none;
+	border-radius: 2rem;
+	padding: 0 1rem;
+	background: none;
+	white-space: nowrap;
+	font: inherit;
+	font-size: 0.9rem;
+	cursor: pointer;
+	transition: all 0.5s;
+
+	&.-red {
+		background: var(--color-red);
+		color: #fff;
+	}
+	&.-green {
+		background: var(--color-green);
+		color: #fff;
+	}
+	&.-blue {
+		background: var(--color-blue);
+		color: #fff;
+	}
+	&.-yellow {
+		background: var(--color-yellow);
+		color: var(--color-background);
+	}
+	&:hover {
+		opacity: 80%;
+	}
+}
+
 .badge {
 	border-radius: 1rem;
 	box-sizing: border-box;

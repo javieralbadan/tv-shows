@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { ShowItem } from '@/types/ShowItem';
 import { ref } from 'vue';
+import { RouterLink } from 'vue-router';
 
 interface Props {
 	show: ShowItem;
@@ -8,10 +9,11 @@ interface Props {
 
 const props = defineProps<Props>();
 const cardImage = ref<string>(props.show.image?.medium);
+const showId = props.show.externals.thetvdb || props.show.id;
 </script>
 
 <template>
-	<div class="show-card">
+	<RouterLink class="show-card" :to="{ name: 'show', params: { id: showId } }">
 		<div class="image" :style="`background-image: url(${cardImage});`" />
 		<div class="imagefallback">
 			<h3 class="name">{{ show.name }}</h3>
@@ -24,7 +26,7 @@ const cardImage = ref<string>(props.show.image?.medium);
 			</p>
 			<h3 class="name">{{ show.name }}</h3>
 		</div>
-	</div>
+	</RouterLink>
 </template>
 
 <style scoped lang="scss">
@@ -43,6 +45,10 @@ $image-height: 250px;
 	box-shadow: 0 0.1rem 0.2rem #101010;
 	cursor: pointer;
 	opacity: 100%;
+
+	&:first-child {
+		margin-left: 0.5rem;
+	}
 
 	&:hover {
 		transform: scale(1.05);

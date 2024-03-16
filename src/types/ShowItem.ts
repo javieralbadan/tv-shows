@@ -31,8 +31,8 @@ export interface ShowItem {
 		officialSite: string | null;
 	};
 	externals: {
-		tvrage: number | null;
-		thetvdb: number;
+		tvrage: string;
+		thetvdb: string;
 		imdb: string;
 	};
 	image: {

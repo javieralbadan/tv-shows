@@ -1,5 +1,6 @@
 {
 	"BASE_URL": "https://api.tvmaze.com",
+	"CURRENT_DB": "thetvdb",
 	"INITIAL_CATEGORIES": [
 		{ "id": "action", "title": "Action" },
 		{ "id": "drama", "title": "Drama" },

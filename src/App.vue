@@ -5,7 +5,9 @@ import { INITIAL_CATEGORIES } from '@/config/index.json';
 
 <template>
 	<header class="header">
-		<h1 class="title">TV Shows App</h1>
+		<h1 class="title">
+			<RouterLink to="/">TV Shows App</RouterLink>
+		</h1>
 		<nav class="nav">
 			<button v-for="item in INITIAL_CATEGORIES" :key="item.id" class="button navbutton">
 				{{ item.title }}
@@ -14,16 +16,25 @@ import { INITIAL_CATEGORIES } from '@/config/index.json';
 	</header>
 
 	<RouterView />
+
+	<footer class="footer">
+		<p>Rotterdam, NL. 2024</p>
+		<a class="designby" href="https://www.linkedin.com/in/javier-albadan/" target="_blank">
+			@javier-albadan
+		</a>
+	</footer>
 </template>
 
 <style scoped lang="scss">
+$desktop-padding: 1rem;
+
 .header {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-items: center;
 	background-color: var(--color-black-full);
-	color: white;
-	padding: 1rem;
+	color: var(--color-white);
+	padding: $desktop-padding;
 
 	.title {
 		font-size: 1.2rem;
@@ -40,7 +51,7 @@ import { INITIAL_CATEGORIES } from '@/config/index.json';
 			bottom: -0.5rem;
 			width: 40%;
 			height: 1px;
-			background-color: var(--vt-c-indigo);
+			background-color: var(--color-indigo);
 			transition: all 0.5s;
 		}
 
@@ -52,6 +63,24 @@ import { INITIAL_CATEGORIES } from '@/config/index.json';
 				width: 80%;
 				background-color: var(--color-red);
 			}
+		}
+	}
+}
+
+.footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: var(--color-black-full);
+	color: var(--color-white);
+	padding: $desktop-padding;
+
+	.designby {
+		color: var(--color-white-soft);
+		transition: color 0.5s;
+
+		&:hover {
+			color: var(--color-red);
 		}
 	}
 }

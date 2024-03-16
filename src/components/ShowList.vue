@@ -48,16 +48,19 @@ onMounted(async () => {
 </template>
 
 <style scoped lang="scss">
+$see-all-button-width: 8rem;
+
 .show-list {
 	display: flex;
 	flex-direction: column;
-	margin: 1rem 1.5rem;
-	padding: 0 0.8rem;
+	margin: 2rem 1rem;
+	padding: 0 1rem 0 0.5rem;
 
 	.header {
 		position: relative;
 		display: flex;
 		justify-content: space-between;
+		padding-left: 0.5rem;
 		color: var(--color-heading);
 
 		&::after {
@@ -65,7 +68,7 @@ onMounted(async () => {
 			z-index: -1;
 			position: absolute;
 			top: 1.2rem;
-			width: 100%;
+			width: calc(100% - $see-all-button-width);
 			height: 1px;
 			border-bottom: 1px solid var(--color-black-soft);
 		}
@@ -76,10 +79,6 @@ onMounted(async () => {
 		padding: 0 1rem;
 		font-weight: bold;
 		background-color: var(--color-background);
-	}
-
-	.seeallbutton {
-		// border: 1rem solid var(--color-background);
 	}
 
 	.rail {

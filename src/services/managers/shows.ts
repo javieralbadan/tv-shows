@@ -1,11 +1,15 @@
 import { showListMapper } from '@/services/mappers/showsMapper';
-import { BASE_URL } from '@/config/index.json';
+import { BASE_URL, CURRENT_DB } from '@/config/index.json';
 
-interface props {
+interface SearchProps {
 	query?: string;
 }
 
-export const searchService = async ({ query = '*' }: props) => {
+interface LookupProps {
+	showId: string;
+}
+
+export const searchService = async ({ query = '*' }: SearchProps) => {
 	const response: Response = await fetch(`${BASE_URL}/search/shows?q=${query}`);
 	if (response.status !== 200) {
 		return { data: null, error: response.statusText };
@@ -14,4 +18,14 @@ export const searchService = async ({ query = '*' }: props) => {
 	const rowdata = await response.json();
 	const data = showListMapper(rowdata);
 	return { data, error: null };
+};
+
+export const lookupService = async ({ showId }: LookupProps) => {
+	const response: Response = await fetch(`${BASE_URL}/lookup/shows?${CURRENT_DB}=${showId}`);
+	if (response.status !== 200) {
+		return { data: null, error: response.statusText };
+	}
+
+	const rowdata = await response.json();
+	return { data: rowdata, error: null };
 };
