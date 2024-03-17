@@ -1,5 +1,12 @@
 @import './base';
 
+$header-height: 65px;
+$footer-height: 55px;
+
+.-fullheight {
+	height: calc(100vh - $header-height - $footer-height);
+}
+
 a {
 	color: var(--color-white-soft);
 	text-decoration: none;

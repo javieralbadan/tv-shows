@@ -7,6 +7,8 @@
 		"dev": "vite",
 		"build": "run-p type-check \"build-only {@}\" --",
 		"preview": "vite preview",
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d dist",
 		"test:unit": "vitest --no-watch",
 		"test:e2e": "playwright test",
 		"build-only": "vite build",
@@ -20,7 +22,7 @@
 			"stylelint --config=.stylelintrc.json",
 			"git add"
 		],
-		"*.{png,jpeg,jpg,gif,svg}": [
+		"*.{png,jpeg,jpg,gif}": [
 			"imagemin-lint-staged",
 			"git add"
 		],
@@ -53,6 +55,7 @@
 		"eslint": "^8.49.0",
 		"eslint-plugin-playwright": "^1.5.2",
 		"eslint-plugin-vue": "^9.17.0",
+		"gh-pages": "^6.1.1",
 		"husky": "^9.0.11",
 		"jsdom": "^24.0.0",
 		"lint-staged": "^15.2.2",

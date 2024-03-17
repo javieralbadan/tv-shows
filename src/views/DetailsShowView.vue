@@ -30,7 +30,7 @@ onMounted(async () => {
 </script>
 
 <template>
-	<div class="details-show">
+	<div class="details-show -fullheight">
 		<BackgroundDetails :image="show?.image" />
 		<ShowDetails :show="show" />
 	</div>
@@ -39,13 +39,9 @@ onMounted(async () => {
 <style scoped lang="scss">
 @import '@/assets/media-queries.scss';
 
-$header-height: 65px;
-$footer-height: 55px;
-
 .details-show {
 	position: relative;
 	width: 100%;
-	height: calc(100vh - $header-height - $footer-height);
 	display: flex;
 	align-items: center;
 	background: var(--color-black-full);
