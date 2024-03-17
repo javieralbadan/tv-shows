@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 import type { ShowItem } from '@/types/ShowItem';
 import DotDivider from '@/components/ui/DotDivider.vue';
 
@@ -8,18 +8,14 @@ interface Props {
 }
 
 const props = defineProps<Props>();
-const schedule = ref<string>('');
-const ended = ref<string>('');
 
-watch(
-	() => props.show,
-	(show) => {
-		const { days, time } = show?.schedule || {};
-		const finalTime = time ? `: ${time}` : '';
-		schedule.value = `${days}${finalTime}`;
-		ended.value = show?.ended?.split('-')[0] || '';
-	},
-);
+const schedule = ref<string>('');
+const { days, time } = props.show?.schedule || {};
+const finalTime = time ? `: ${time}` : '';
+schedule.value = `${days}${finalTime}`;
+
+const ended = ref<string>('');
+ended.value = props.show?.ended?.split('-')[0] || '';
 </script>
 
 <template>
@@ -38,8 +34,8 @@ watch(
 		</div>
 		<p class="summary" v-html="show?.summary" />
 		<p>{{ schedule }}</p>
-		<a 
-			v-if="show?.officialSite" 
+		<a
+			v-if="show?.officialSite"
 			class="button -red"
 			:href="show?.officialSite"
 			target="_blank"
@@ -51,7 +47,7 @@ watch(
 </template>
 
 <style scoped lang="scss">
-@import '@/assets/media-queries.scss';
+@import '@/assets/constants.scss';
 
 .show-details {
 	position: relative;
@@ -101,11 +97,17 @@ watch(
 	gap: 0.5rem;
 }
 
+.summary {
+	max-height: 400px;
+	padding-right: 1rem;
+	overflow-y: auto;
+}
+
 .pi-external-link {
 	margin-left: 0.5rem;
 }
 
-@media (min-width: $desktop-breakpoint) {
+@media (min-width: $large-desktop-breakpoint) {
 	.show-details {
 		width: min(1000px, 100%);
 		gap: 1rem;

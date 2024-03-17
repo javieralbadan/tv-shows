@@ -19,9 +19,11 @@ cardImage.value = image ? `background-image: url(${image});` : '';
 </script>
 
 <template>
-	<div class="image" :style="cardImage" />
-	<div class="imagefallback">
-		<h3 class="name">{{ name }}</h3>
+	<div class="card-image">
+		<div class="image" :style="cardImage" />
+		<div class="imagefallback">
+			<h3 class="name">{{ name }}</h3>
+		</div>
 	</div>
 </template>
 

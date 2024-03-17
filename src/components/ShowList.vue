@@ -37,10 +37,13 @@ onMounted(async () => {
 </script>
 
 <template>
-	<div class="show-list">
+	<div :id="category.id" class="show-list">
 		<div class="header">
 			<h2 class="title">{{ category.title }}</h2>
-			<button class="button -red seeallbutton">{{ $t('showList.seeAll') }}</button>
+			<button class="button -red">
+				{{ $t('showList.seeAll') }}
+				<i class="pi pi-angle-right" />
+			</button>
 		</div>
 		<AppLoader v-if="isLoading && !isError" />
 		<NoData v-else-if="isError" />
@@ -56,13 +59,14 @@ $see-all-button-width: 8rem;
 .show-list {
 	display: flex;
 	flex-direction: column;
-	margin: 2rem 1rem;
+	margin: 0 1rem;
 	padding: 0 1rem 0 0.5rem;
 
 	.header {
 		position: relative;
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 		padding-left: 0.5rem;
 		color: var(--color-heading);
 
@@ -90,6 +94,10 @@ $see-all-button-width: 8rem;
 		overflow-x: scroll;
 		scroll-behavior: smooth;
 		padding: 0.8rem 0;
+	}
+
+	.button .pi-angle-right {
+		margin: 0.1rem 0 0 0.3rem;
 	}
 }
 </style>

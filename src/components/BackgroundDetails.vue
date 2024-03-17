@@ -18,14 +18,14 @@ backgroundImage.value = image ? `background-image: url(${image});` : '';
 </script>
 
 <template>
-	<div class="show-details">
+	<div class="background-details">
 		<div class="background" :style="backgroundImage" />
 		<div class="backdrop" />
 	</div>
 </template>
 
 <style scoped lang="scss">
-@import '@/assets/media-queries.scss';
+@import '@/assets/constants.scss';
 
 $background-width: 75%;
 
@@ -59,7 +59,7 @@ $background-width: 75%;
 	);
 }
 
-@media (min-width: $desktop-breakpoint) {
+@media (min-width: $large-desktop-breakpoint) {
 	.background {
 		width: $background-width;
 		background-position: center right 25%;

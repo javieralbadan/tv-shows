@@ -33,18 +33,20 @@ onMounted(async () => {
 </script>
 
 <template>
-	<AppLoader v-if="isLoading" class="apploader" full-height />
-	<NoData v-else-if="isError" link-to-home />
-	<div v-else class="details-show -fullheight">
-		<BackgroundDetails :image="show?.image" />
-		<ShowDetails :show="show" />
+	<div class="details-show -fullheight">
+		<AppLoader v-if="isLoading" class="app-loader" full-height />
+		<NoData v-else-if="isError" link-to-home />
+		<template v-else>
+			<BackgroundDetails :image="show?.image" />
+			<ShowDetails :show="show" />
+		</template>
 	</div>
 </template>
 
 <style scoped lang="scss">
-@import '@/assets/media-queries.scss';
+@import '@/assets/constants.scss';
 
-.apploader {
+.app-loader {
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -53,18 +55,8 @@ onMounted(async () => {
 
 .details-show {
 	position: relative;
-	width: 100%;
 	display: flex;
 	align-items: center;
 	background: var(--color-black-full);
-}
-
-@media (min-width: $desktop-breakpoint) {
-	.details-show {
-		.content {
-			width: min(600px, 100%);
-			padding: 0 10%;
-		}
-	}
 }
 </style>

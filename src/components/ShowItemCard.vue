@@ -34,6 +34,7 @@ $card-width: 200px;
 	flex: 0 0 auto;
 	align-items: flex-start;
 	width: $card-width;
+	// TODO: work with this prop for change layout feature
 	// margin: 0.6rem;
 	overflow: hidden;
 	border-radius: 0.5rem;

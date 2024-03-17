@@ -1,87 +1,27 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router';
-import { INITIAL_CATEGORIES } from '@/config/index.json';
+import AppHeader from '@/components/layout/AppHeader.vue';
+import AppFooter from '@/components/layout/AppFooter.vue';
 </script>
 
 <template>
-	<header class="header">
-		<h1 class="title">
-			<RouterLink to="/">{{ $t('app.title') }}</RouterLink>
-		</h1>
-		<nav class="nav">
-			<button v-for="item in INITIAL_CATEGORIES" :key="item.id" class="button navbutton">
-				{{ item.title }}
-			</button>
-		</nav>
-	</header>
-
-	<RouterView />
-
-	<footer class="footer">
-		<p>{{ $t('app.footerInfo') }}</p>
-		<a class="designby" href="https://www.linkedin.com/in/javier-albadan/" target="_blank">
-			@{{ $t('app.author') }}
-		</a>
-	</footer>
+	<AppHeader />
+	<div class="content">
+		<RouterView />
+	</div>
+	<AppFooter />
 </template>
 
 <style scoped lang="scss">
-$desktop-padding: 1rem;
+@import '@/assets/constants.scss';
 
-.header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	background-color: var(--color-black-full);
-	color: var(--color-white);
-	padding: $desktop-padding;
-
-	.title {
-		font-size: 1.2rem;
-	}
-
-	.navbutton {
-		position: relative;
-		color: #ddd;
-		transition: color 0.5s;
-
-		&::after {
-			content: '';
-			position: absolute;
-			bottom: -0.5rem;
-			width: 40%;
-			height: 1px;
-			background-color: var(--color-indigo);
-			transition: all 0.5s;
-		}
-
-		&:hover {
-			color: var(--color-red);
-
-			&::after {
-				bottom: -0.1rem;
-				width: 80%;
-				background-color: var(--color-red);
-			}
-		}
-	}
+.content {
+	margin-top: $mobile-header-height;
 }
 
-.footer {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	background-color: var(--color-black-full);
-	color: var(--color-white);
-	padding: $desktop-padding;
-
-	.designby {
-		color: var(--color-white-soft);
-		transition: color 0.5s;
-
-		&:hover {
-			color: var(--color-red);
-		}
+@media (min-width: $large-desktop-breakpoint) {
+	.content {
+		margin-top: $desktop-header-height;
 	}
 }
 </style>

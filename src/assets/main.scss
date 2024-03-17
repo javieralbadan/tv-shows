@@ -1,11 +1,15 @@
 @import './base';
+@import './constants';
 @import 'primeicons/primeicons.css';
 
-$header-height: 65px;
-$footer-height: 55px;
-
 .-fullheight {
-	height: calc(100vh - $header-height - $footer-height);
+	height: calc(100vh - $mobile-header-height - $mobile-footer-height);
+}
+
+@media (min-width: $large-desktop-breakpoint) {
+	.-fullheight {
+		height: calc(100vh - $desktop-header-height - $desktop-footer-height);
+	}
 }
 
 a {
