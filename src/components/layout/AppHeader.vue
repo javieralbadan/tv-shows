@@ -1,5 +1,25 @@
 <script setup lang="ts">
 import { INITIAL_CATEGORIES } from '@/config/index.json';
+import { useRouter } from 'vue-router';
+import VueScrollTo from 'vue-scrollto';
+
+const router = useRouter();
+const delayToScroll = 200;
+const duration = 500;
+const options = {
+	offset: -100,
+};
+
+const goToCategory = (element: string) => {
+	const currentName = router.currentRoute.value.name;
+	if (currentName !== 'home') {
+		router.push('/');
+	}
+
+	setTimeout(() => {
+		VueScrollTo.scrollTo(element, duration, options);
+	}, delayToScroll);
+};
 </script>
 
 <template>
@@ -9,14 +29,14 @@ import { INITIAL_CATEGORIES } from '@/config/index.json';
 				<RouterLink to="/">{{ $t('app.title') }}</RouterLink>
 			</h1>
 			<nav class="nav">
-				<RouterLink
+				<button
 					v-for="item in INITIAL_CATEGORIES"
 					:key="item.id"
 					class="button navbutton"
-					:to="`#${item.id}`"
+					@click="goToCategory(`#${item.id}`)"
 				>
 					{{ item.title }}
-				</RouterLink>
+				</button>
 			</nav>
 		</header>
 	</div>
