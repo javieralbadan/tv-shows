@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { searchService } from '@/services/managers/shows';
+import AppLoader from '@/components/ui/AppLoader.vue';
+import NoData from '@/components/ui/NoData.vue';
 import ShowItemCard from '@/components/ShowItemCard.vue';
 import type { ShowItem } from '@/types/ShowItem';
 import { onMounted, ref } from 'vue';
@@ -40,7 +42,8 @@ onMounted(async () => {
 			<h2 class="title">{{ category.title }}</h2>
 			<button class="button -red seeallbutton">{{ $t('showList.seeAll') }}</button>
 		</div>
-		<p v-if="isLoading && !isError">Loading...</p>
+		<AppLoader v-if="isLoading && !isError" />
+		<NoData v-else-if="isError" />
 		<div v-else class="rail">
 			<ShowItemCard v-for="item in shows" :key="item.id" :show="item" />
 		</div>

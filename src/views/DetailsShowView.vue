@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { lookupService } from '@/services/managers/shows';
 import AppLoader from '@/components/ui/AppLoader.vue';
+import NoData from '@/components/ui/NoData.vue';
 import BackgroundDetails from '@/components/BackgroundDetails.vue';
 import ShowDetails from '@/components/ShowDetails.vue';
 import type { ShowItem } from '@/types/ShowItem';
@@ -33,6 +34,7 @@ onMounted(async () => {
 
 <template>
 	<AppLoader v-if="isLoading" class="apploader" full-height />
+	<NoData v-else-if="isError" link-to-home />
 	<div v-else class="details-show -fullheight">
 		<BackgroundDetails :image="show?.image" />
 		<ShowDetails :show="show" />

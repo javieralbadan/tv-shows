@@ -2,7 +2,7 @@
 	<main class="not-found -fullheight">
 		<h1>
 			{{ $t('app.notFound') }}
-			<RouterLink class="backhome" to="/">
+			<RouterLink class="-highlightlink" to="/">
 				{{ $t('app.backHome') }}
 			</RouterLink>
 		</h1>
@@ -20,15 +20,6 @@
 	img {
 		max-width: 400px;
 		margin: 2rem 1rem;
-	}
-
-	.backhome {
-		color: var(--color-yellow);
-		transition: all 0.5s;
-
-		&:hover {
-			text-decoration: underline;
-		}
 	}
 }
 </style>

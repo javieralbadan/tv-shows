@@ -85,3 +85,12 @@ a {
 		color: #f5b975;
 	}
 }
+
+.-highlightlink {
+	color: var(--color-yellow);
+	transition: all 0.5s;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
