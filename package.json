@@ -7,7 +7,7 @@
 		"dev": "vite",
 		"build": "run-p type-check \"build-only {@}\" --",
 		"preview": "vite preview",
-		"predeploy": "npm run build",
+		"predeploy": "npm run build && node scripts/notFound.js",
 		"deploy": "gh-pages -d dist",
 		"test:unit": "vitest --no-watch",
 		"test:e2e": "playwright test",
@@ -36,6 +36,8 @@
 		]
 	},
 	"dependencies": {
+		"fs-extra": "^11.2.0",
+		"primeicons": "^6.0.1",
 		"vue": "^3.4.21",
 		"vue-i18n": "^9.10.2",
 		"vue-router": "^4.3.0"

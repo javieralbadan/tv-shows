@@ -2,7 +2,7 @@
 import type { ShowItem } from '@/types/ShowItem';
 import { RouterLink } from 'vue-router';
 import CardImage from '@/components/CardImage.vue';
-import DotDivider from '@/components/DotDivider.vue';
+import DotDivider from '@/components/ui/DotDivider.vue';
 
 interface Props {
 	show: ShowItem;

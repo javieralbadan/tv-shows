@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 
 interface ImageProps {
 	medium: string;
@@ -13,13 +13,8 @@ interface Props {
 const props = defineProps<Props>();
 const backgroundImage = ref<string>('');
 
-watch(
-	() => props.image,
-	(newImage) => {
-		const image = newImage?.original || newImage?.medium || '';
-		backgroundImage.value = image ? `background-image: url(${image});` : '';
-	},
-);
+const image = props.image?.original || props.image?.medium || '';
+backgroundImage.value = image ? `background-image: url(${image});` : '';
 </script>
 
 <template>

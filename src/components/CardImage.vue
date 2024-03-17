@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 
 interface ImageProps {
 	medium: string;
@@ -12,20 +12,14 @@ interface Props {
 }
 
 const props = defineProps<Props>();
-const cardImage = ref<string>('');
+const image = props.image?.medium || props.image?.original || '';
 
-watch(
-	() => props.image,
-	(newImage) => {
-		console.log('🚀 ~ newImage:', newImage);
-		const image = newImage?.medium || newImage?.original || '';
-		cardImage.value = image ? `background-image: url(${image});` : '';
-	},
-);
+const cardImage = ref<string>('');
+cardImage.value = image ? `background-image: url(${image});` : '';
 </script>
 
 <template>
-	<div class="image" :style="`background-image: url(${cardImage});`" />
+	<div class="image" :style="cardImage" />
 	<div class="imagefallback">
 		<h3 class="name">{{ name }}</h3>
 	</div>

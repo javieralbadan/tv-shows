@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { lookupService } from '@/services/managers/shows';
+import AppLoader from '@/components/ui/AppLoader.vue';
 import BackgroundDetails from '@/components/BackgroundDetails.vue';
 import ShowDetails from '@/components/ShowDetails.vue';
 import type { ShowItem } from '@/types/ShowItem';
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
+
 const router = useRouter();
 const { id } = router.currentRoute.value.params;
 const showId: string = Array.isArray(id) ? id[0] : id;
@@ -30,7 +32,8 @@ onMounted(async () => {
 </script>
 
 <template>
-	<div class="details-show -fullheight">
+	<AppLoader v-if="isLoading" class="apploader" full-height />
+	<div v-else class="details-show -fullheight">
 		<BackgroundDetails :image="show?.image" />
 		<ShowDetails :show="show" />
 	</div>
@@ -38,6 +41,13 @@ onMounted(async () => {
 
 <style scoped lang="scss">
 @import '@/assets/media-queries.scss';
+
+.apploader {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
 
 .details-show {
 	position: relative;
