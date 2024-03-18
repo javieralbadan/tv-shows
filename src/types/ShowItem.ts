@@ -9,8 +9,8 @@ export interface ShowItem {
 	status: string;
 	runtime: number;
 	averageRuntime: number;
-	premiered: string;
-	ended: string;
+	premiered: string | null;
+	ended: string | null;
 	officialSite: string | null;
 	schedule: {
 		time: string;
@@ -31,9 +31,9 @@ export interface ShowItem {
 		officialSite: string | null;
 	};
 	externals: {
-		tvrage: string;
-		thetvdb: string;
-		imdb: string;
+		tvrage: string | number | null;
+		thetvdb: string | number | null;
+		imdb: string | number | null;
 	};
 	image: {
 		medium: string;

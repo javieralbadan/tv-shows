@@ -1,5 +1,5 @@
-import { showListMapper } from '@/services/mappers/showsMapper';
 import { BASE_URL, CURRENT_DB } from '@/config/index.json';
+import { showListMapper } from '@/services/mappers/showsMapper';
 
 interface SearchProps {
 	query?: string;
