@@ -55,6 +55,11 @@ a {
 	&:hover {
 		opacity: 80%;
 	}
+	&.-disabled {
+		opacity: 50%;
+		pointer-events: none;
+		cursor: not-allowed;
+	}
 }
 
 .badge {

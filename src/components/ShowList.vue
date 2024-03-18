@@ -40,7 +40,7 @@ onMounted(async () => {
 	<div :id="category.id" class="show-list">
 		<div class="header">
 			<h2 class="title">{{ category.title }}</h2>
-			<button class="button -red">
+			<button class="button -red -disabled" disabled="true">
 				{{ $t('showList.seeAll') }}
 				<i class="pi pi-angle-right" />
 			</button>
