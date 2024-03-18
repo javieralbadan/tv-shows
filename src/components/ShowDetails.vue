@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import type { ShowItem } from '@/types/ShowItem';
 import DotDivider from '@/components/ui/DotDivider.vue';
+import type { ShowItem } from '@/types/ShowItem';
+import { ref } from 'vue';
 
 interface Props {
 	show: ShowItem | null;
 }
 
-const props = defineProps<Props>();
+const props = defineProps<Props>(); 
 
 const schedule = ref<string>('');
 const { days, time } = props.show?.schedule || {};

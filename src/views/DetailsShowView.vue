@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { lookupService } from '@/services/managers/shows';
-import AppLoader from '@/components/ui/AppLoader.vue';
-import NoData from '@/components/ui/NoData.vue';
 import BackgroundDetails from '@/components/BackgroundDetails.vue';
 import ShowDetails from '@/components/ShowDetails.vue';
+import AppLoader from '@/components/ui/AppLoader.vue';
+import NoData from '@/components/ui/NoData.vue';
+import { lookupService } from '@/services/managers/shows';
 import type { ShowItem } from '@/types/ShowItem';
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';

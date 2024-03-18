@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { searchService } from '@/services/managers/shows';
+import ShowItemCard from '@/components/ShowItemCard.vue';
 import AppLoader from '@/components/ui/AppLoader.vue';
 import NoData from '@/components/ui/NoData.vue';
-import ShowItemCard from '@/components/ShowItemCard.vue';
+import { searchService } from '@/services/managers/shows';
 import type { ShowItem } from '@/types/ShowItem';
 import { onMounted, ref } from 'vue';
 

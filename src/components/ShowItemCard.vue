@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { ShowItem } from '@/types/ShowItem';
-import { RouterLink } from 'vue-router';
 import CardImage from '@/components/CardImage.vue';
 import DotDivider from '@/components/ui/DotDivider.vue';
+import type { ShowItem } from '@/types/ShowItem';
+import { RouterLink } from 'vue-router';
 
 interface Props {
 	show: ShowItem;
