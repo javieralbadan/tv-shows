@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import SearchBar from '@/components/SearchBar.vue';
 import ShowList from '@/components/ShowList.vue';
 import { INITIAL_CATEGORIES } from '@/config/index.json';
 </script>
 
 <template>
 	<main class="home-view">
+		<SearchBar />
 		<ShowList v-for="item in INITIAL_CATEGORIES" :key="item.id" :category="item" />
 	</main>
 </template>

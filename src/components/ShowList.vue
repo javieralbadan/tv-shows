@@ -48,7 +48,11 @@ onMounted(async () => {
 		<AppLoader v-if="isLoading && !isError" />
 		<NoData v-else-if="isError" />
 		<div v-else class="rail">
-			<ShowItemCard v-for="item in shows" :key="item.id" :show="item" />
+			<ShowItemCard v-for="item in shows"
+				:key="item.id"
+				:show="item"
+				size="big"
+			/>
 		</div>
 	</div>
 </template>

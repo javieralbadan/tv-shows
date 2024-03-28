@@ -9,6 +9,7 @@ interface ImageProps {
 interface Props {
 	name: string;
 	image: ImageProps | undefined;
+	sizeClass: string;
 }
 
 const props = defineProps<Props>();
@@ -19,36 +20,52 @@ cardImage.value = image ? `background-image: url(${image});` : '';
 </script>
 
 <template>
-	<div class="card-image">
+	<div :class="['card-image', sizeClass]">
 		<div class="image" :style="cardImage" />
-		<div class="imagefallback">
+		<div v-if="sizeClass !== '-small'" class="imagefallback">
 			<h3 class="name">{{ name }}</h3>
 		</div>
 	</div>
 </template>
 
 <style scoped lang="scss">
-$card-width: 200px;
-$image-height: 250px;
+@import '@/assets/constants.scss';
+
+$card-width-big: 200px;
+$image-height-big: 250px;
 
 .image {
-	width: $card-width;
-	height: $image-height;
+	width: $card-image-small-size;
+	height: $card-image-small-size;
 	background-position: center;
-	background-origin: center;
 	background-size: cover;
 	background-repeat: no-repeat;
+	background: #000;
 }
 
 .imagefallback {
 	position: absolute;
 	top: 0;
 	z-index: -1;
-	width: $card-width;
-	height: $image-height;
+	width: $card-image-small-size;
+	height: $card-image-small-size;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	background: #000;
+}
+
+.card-image {
+	&.-big {
+		.image {
+			width: $card-width-big;
+			height: $image-height-big;
+		}
+		
+		.imagefallback {
+			width: $card-width-big;
+			height: $image-height-big;
+		}
+	}
 }
 </style>

@@ -6,20 +6,24 @@ import { RouterLink } from 'vue-router';
 
 interface Props {
 	show: ShowItem;
+	size?: 'small' | 'big';
 }
 
 const props = defineProps<Props>();
 const showId = props.show.externals.thetvdb || props.show.id;
+const sizeClass = props.size === 'small' ? '-small' : '-big';
 </script>
 
 <template>
-	<RouterLink class="show-card" :to="{ name: 'show', params: { id: showId } }">
-		<CardImage :image="show.image" :name="show.name" />
+	<RouterLink :class="['show-card', sizeClass]" :to="{ name: 'show', params: { id: showId } }">
+		<CardImage :image="show.image" :name="show.name" :sizeClass="sizeClass" />
 		<div class="content">
 			<p class="leading">
 				<span class="leadingmeta">{{ show.language }}</span>
-				<DotDivider />
-				<span class="leadingmeta">{{ show.averageRuntime }}min</span>
+				<DotDivider v-if="show.language && show.averageRuntime" />
+				<span v-if="show.averageRuntime" class="leadingmeta">
+					{{ show.averageRuntime }}min
+				</span>
 			</p>
 			<h3 class="name">{{ show.name }}</h3>
 		</div>
@@ -27,19 +31,23 @@ const showId = props.show.externals.thetvdb || props.show.id;
 </template>
 
 <style scoped lang="scss">
-$card-width: 200px;
+@import '@/assets/constants.scss';
 
 .show-card {
 	position: relative;
 	flex: 0 0 auto;
 	align-items: flex-start;
-	width: $card-width;
+	width: $card-image-small-size;
 	overflow: hidden;
 	border-radius: 0.5rem;
 	transition: all 0.5s;
-	box-shadow: 0 0.1rem 0.2rem #101010;
+	box-shadow: $black-shadow;
 	cursor: pointer;
 	opacity: 100%;
+	
+	&.-big {
+		width: $card-image-big-size;
+	}
 
 	&:first-child {
 		margin-left: 0.5rem;

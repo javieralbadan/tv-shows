@@ -1,5 +1,4 @@
 {
 	"editor.codeActionsOnSave": ["source.organizeImports", "source.fixAll"],
-	"editor.formatOnSave": true,
-	"editor.defaultFormatter": "esbenp.prettier-vscode"
+	"editor.formatOnSave": true
 }
