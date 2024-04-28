@@ -1,17 +1,22 @@
-/* color palette from <https://github.com/vuejs/theme> */
 :root {
-	--vt-c-white: #fff;
-	--vt-c-white-soft: #f8f8f8;
-	--vt-c-white-mute: #f2f2f2;
-	--vt-c-black: #181818;
-	--vt-c-black-soft: #222;
-	--vt-c-black-mute: #282828;
-	--vt-c-indigo: #2c3e50;
-	--color-background: var(--vt-c-white);
-	--color-background-soft: var(--vt-c-white-soft);
-	--color-background-mute: var(--vt-c-white-mute);
-	--color-heading: var(--vt-c-indigo);
-	--color-text: var(--vt-c-indigo);
+	--color-white: #f0f0f0;
+	--color-white-soft: #c8c8c8;
+	--color-gray: #808080;
+	--color-gray-soft: #b4b4b4;
+	--color-black: #181818;
+	--color-black-soft: #333;
+	--color-black-full: #060606;
+	--color-text: var(--color-white);
+	--color-text-soft: var(--color-white-soft);
+	--color-background: var(--color-black);
+	--color-background-soft: var(--color-black-soft);
+	--color-heading: var(--color-white);
+	--color-heading-inverted: var(--color-indigo);
+	--color-indigo: #2c3e50;
+	--color-red: #f43f5e;
+	--color-green: #3aae7c;
+	--color-blue: #517cd8;
+	--color-yellow: #dcf43f;
 }
 
 *,
@@ -23,7 +28,6 @@
 }
 
 body {
-	min-height: 100vh;
 	color: var(--color-text);
 	background: var(--color-background);
 	line-height: 1.6;

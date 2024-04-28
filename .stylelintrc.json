@@ -1,7 +1,12 @@
 {
-	"extends": ["stylelint-config-standard"],
+	"extends": ["stylelint-config-standard-scss"],
 	"ignoreFiles": ["**/*.js", "**/*.ts", "**/*.json"],
 	"rules": {
-		"media-feature-range-notation": null
+		"color-function-notation": null,
+		"comment-empty-line-before": null,
+		"alpha-value-notation": "percentage",
+		"media-feature-range-notation": null,
+		"rule-empty-line-before": null,
+		"selector-class-pattern": null
 	}
 }
