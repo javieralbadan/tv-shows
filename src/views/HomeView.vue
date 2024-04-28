@@ -1,13 +1,46 @@
 <script setup lang="ts">
 import SearchBar from '@/components/SearchBar.vue';
 import ShowList from '@/components/ShowList.vue';
+import AppLoader from '@/components/ui/AppLoader.vue';
+import NoData from '@/components/ui/NoData.vue';
 import { INITIAL_CATEGORIES } from '@/config/index.json';
+import { showService } from '@/services/managers/showsManager';
+import type { ShowListByCategory } from '@/types/ShowListByCategory';
+import { onMounted, ref } from 'vue';
+
+const shows = ref<ShowListByCategory | null>(null);
+const isLoading = ref(true);
+const isError = ref(false);
+
+onMounted(async () => {
+	try {
+		const { data, error } = await showService();
+		if (data && !error) {
+			shows.value = data as ShowListByCategory;
+		} else {
+			isError.value = true;
+		}
+	} catch (error) {
+		isError.value = true;
+	} finally {
+		isLoading.value = false;
+	}
+});
 </script>
 
 <template>
 	<main class="home-view">
 		<SearchBar />
-		<ShowList v-for="item in INITIAL_CATEGORIES" :key="item.id" :category="item" />
+		<AppLoader v-if="isLoading && !isError" />
+		<NoData v-else-if="isError" />
+		<template v-else-if="shows">
+			<ShowList
+				v-for="category in INITIAL_CATEGORIES"
+				:key="category.id"
+				:category="category"
+				:shows="shows[category.id]"
+			/>
+		</template>
 	</main>
 </template>
 

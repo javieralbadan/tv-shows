@@ -35,10 +35,6 @@ $card-width-big: 200px;
 $image-height-big: 250px;
 
 .image {
-	width: $card-image-small-size;
-	height: $card-image-small-size;
-	background-position: center;
-	background-size: cover;
 	background-repeat: no-repeat;
 	background: #000;
 }
@@ -47,8 +43,6 @@ $image-height-big: 250px;
 	position: absolute;
 	top: 0;
 	z-index: -1;
-	width: $card-image-small-size;
-	height: $card-image-small-size;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -56,10 +50,27 @@ $image-height-big: 250px;
 }
 
 .card-image {
+	&.-small {
+		.image {
+			width: $card-image-small-size;
+			height: $card-image-small-size;
+			background-size: contain;
+			background-position: center center;
+		}
+
+		.imagefallback {
+			width: $card-image-small-size;
+			height: $card-image-small-size;
+		}
+	}
+}
+.card-image {
 	&.-big {
 		.image {
 			width: $card-width-big;
 			height: $image-height-big;
+			background-size: cover;
+			background-position: top center;
 		}
 		
 		.imagefallback {

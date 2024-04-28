@@ -1,39 +1,20 @@
 <script setup lang="ts">
 import ShowItemCard from '@/components/ShowItemCard.vue';
-import AppLoader from '@/components/ui/AppLoader.vue';
-import NoData from '@/components/ui/NoData.vue';
-import { searchService } from '@/services/managers/shows';
+import { MAX_ITEMS_IN_LIST } from '@/config/index.json';
 import type { ShowItem } from '@/types/ShowItem';
-import { onMounted, ref } from 'vue';
 
-interface CategoryProps {
+interface Category {
 	id: string;
 	title: string;
 }
 
 interface Props {
-	category: CategoryProps;
+	category: Category;
+	shows: ShowItem[];
 }
 
 const props = defineProps<Props>();
-const shows = ref<ShowItem[]>([]);
-const isLoading = ref(true);
-const isError = ref(false);
-
-onMounted(async () => {
-	try {
-		const { data, error } = await searchService({ query: props.category.id });
-		if (data && !error) {
-			shows.value = data;
-		} else {
-			isError.value = true;
-		}
-	} catch (error) {
-		isError.value = true;
-	} finally {
-		isLoading.value = false;
-	}
-});
+const previewShows = props.shows?.slice(0, MAX_ITEMS_IN_LIST);
 </script>
 
 <template>
@@ -45,10 +26,8 @@ onMounted(async () => {
 				<i class="pi pi-angle-right" />
 			</button>
 		</div>
-		<AppLoader v-if="isLoading && !isError" />
-		<NoData v-else-if="isError" />
-		<div v-else class="rail">
-			<ShowItemCard v-for="item in shows"
+		<div class="rail">
+			<ShowItemCard v-for="item in previewShows"
 				:key="item.id"
 				:show="item"
 				size="big"

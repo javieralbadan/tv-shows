@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import SuggestionsContainer from '@/components/SuggestionsContainer.vue';
-import { searchService } from '@/services/managers/shows';
+import { searchService } from '@/services/managers/showsManager';
 import type { ShowItem } from '@/types/ShowItem';
 import debounce from 'lodash.debounce'; // Import debounce from lodash
 import { ref } from 'vue';
@@ -98,3 +98,4 @@ const checkSuggestions = () => {
 	}
 }
 </style>
+@/services/managers/showsManager

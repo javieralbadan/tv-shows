@@ -35,7 +35,6 @@ Since it was not a complex logic, other technical decisions were:
 
 ## Possible improvements / Next steps:
 
--   Search component with a debounce before call the API, and load some suggestions
 -   Handle sorter / filter features in the home page
 -   Toggle feature to change layout of cards
 -   Toggle feature to alternate between dark and light mode

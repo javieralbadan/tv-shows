@@ -103,6 +103,10 @@ const goToCategory = (element: string) => {
 				background-color: var(--color-red);
 			}
 		}
+
+		&:focus-visible {
+			outline: none;
+		}
 	}
 }
 

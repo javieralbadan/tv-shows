@@ -1,7 +1,7 @@
 import * as mappers from '@/services/mappers/showsMapper';
 import { describe, expect, it, vi } from 'vitest';
 import { MOCK_LIST_RESPONSE, MOCK_SHOW_DETAIL_RESPONSE } from '../__mocks__/serviceData';
-import { lookupService, searchService } from '../shows';
+import { lookupService, searchService } from '../showsManager';
 
 describe('searchService', () => {
 	it('searchService should return error when response status is not 200', async () => {
